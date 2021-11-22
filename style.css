@@ -12,7 +12,7 @@ body {
 }
 
 :root {
-  --cell-size: 10rem;
+  --cell-size: 12rem;
   --mark-size: calc(var(--cell-size) * 0.9);
 }
 
@@ -46,7 +46,7 @@ header {
 .cell {
   width: var(--cell-size);
   height: var(--cell-size);
-  border: 2px solid black;
+  border: 5px solid black;
   font-size: 8rem;
   display: flex;
   justify-content: center;
@@ -129,7 +129,7 @@ header {
 .board.circle .cell:not(.x):not(.circle):hover::before,
 .board.x .cell:not(.x):not(.circle):hover::before,
 .board.x .cell:not(.x):not(.circle):hover::after {
-  background-color: lightgray;
+  background-color: rgb(221, 220, 220);
 }
 
 .winning-message {
@@ -148,6 +148,10 @@ header {
   font-size: 7rem;
 }
 
+.winning-message.show {
+  display: flex;
+}
+
 .winning-message button {
   font-size: 3rem;
   background-color: white;
@@ -163,9 +167,11 @@ header {
 
 footer {
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
-.winning-message.show {
-  display: flex;
+.logo {
+  height: 2rem;
+  width: 2rem;
+  cursor: pointer;
 }

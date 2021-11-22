@@ -31,8 +31,11 @@ function handleClick(e) {
   const currentClass = circleTurn ? circleClass : xClass;
   drawMark(cell, currentClass);
   swapPlayer();
-  if (checkWinner(currentClass)) {endGame(false)
-} else if(isTie()){endGame(true)}
+  if (checkWinner(currentClass)) {
+    endGame(false);
+  } else if (isTie()) {
+    endGame(true);
+  }
 }
 
 function drawMark(cell, currentClass) {
@@ -72,8 +75,10 @@ function endGame(tie) {
   winningMessageElement.classList.add("show");
 }
 
-function isTie(){
-   return [...cells].every(cell=>{
-       return cell.classList.contains(xClass)||cell.classList.contains(circleClass)
-   }) 
+function isTie() {
+  return [...cells].every((cell) => {
+    return (
+      cell.classList.contains(xClass) || cell.classList.contains(circleClass)
+    );
+  });
 }
