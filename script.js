@@ -1,11 +1,14 @@
 const cells = document.querySelectorAll(".cell")
+let playerTurn
 
 function drawCircle(){
     cells.forEach(cell=>{
-    cell.addEventListener('click',()=>{
-        cell.textContent= '〇'
-    })
+    cell.addEventListener('click',handleClick,{once:true})
 })
+}
+
+function handleClick(e){
+    
 }
 
 function removePlayer(){
@@ -30,4 +33,4 @@ function drawX(){
 //     drawCircle()
 //     removePlayer();
 // }
-drawX();
+drawCircle();

@@ -8,6 +8,10 @@ body{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+:root{
+    --cell-size:10rem;
+    --mark-size:calc(var(--cell-size)*0.9);
+}
 
 header{
     background-color:#2a3a46 ;
@@ -16,16 +20,16 @@ header{
     align-items: center;
     font-size: 6rem;
     color:cadetblue;
-    
     padding: 2rem;
     font-weight: 800;
 }
 
 .container{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+
+    justify-content: space-evenly;
     align-items: center;
+    
     height: 70vh;
 }
 
@@ -34,21 +38,115 @@ header{
     justify-content: center;
     align-items: center;
     grid-template-columns:repeat(3,auto);
-    width: 30rem;
-    height: 30rem;
-    
-
+    width: calc(var(--cell-size)*3);
+    height: calc(var(--cell-size)*3);
 }
 
+
 .cell{
-    width: 10rem;
-    height: 10rem;
-    background-color: white;
+    width: var(--cell-size);
+    height: var(--cell-size);
     border: 1px solid black;
     font-size: 8rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+}
+
+.cell:nth-child(1),
+.cell:nth-child(2),
+.cell:nth-child(3){
+    border-top: none;
+}
+.cell:nth-child(1),
+.cell:nth-child(4),
+.cell:nth-child(7){
+    border-left: none;
+}
+
+.cell:nth-child(3),
+.cell:nth-child(6),
+.cell:nth-child(9){
+    border-right: none;
+}
+
+.cell:nth-child(7),
+.cell:nth-child(8),
+.cell:nth-child(9){
+    border-bottom: none;
+}
+
+.cell.x,
+.cell.circle{
+    cursor:not-allowed;
+}
+
+.cell.x::before,
+.cell.x::after{
+    content:'';
+    width: calc(var(--mark-size)*.15);
+    height: var(--mark-size);
+    background-color: black;
+    position: absolute;
+}
+
+
+.cell::before{
+    transform: rotate(45deg);
+}
+
+.cell.x::after{
+    transform: rotate(-45deg);
+}
+
+.cell.circle::before,
+.cell.circle::after{
+    content:'';
+    background-color: black;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.cell.circle::after{
+    width: calc(var(--mark-size)*.6);
+    height: calc(var(--mark-size)*.6);
+    background-color: wheat;
+}
+
+.cell.circle::before{
+    width: calc(var(--mark-size)*.9);
+    height: calc(var(--mark-size)*.9);
+}
+
+.winning-message{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(0, 0, 0, 0.8);
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 7rem;
+    
+}
+
+.winning-message button{
+    font-size: 3rem;
+    background-color: white;
+    border: 1px solid black;
+    padding: 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.winning-message button:hover{
+    background-color: lightgray;
 }
 
 footer {
@@ -56,3 +154,7 @@ footer {
     font-size: 1.5rem;
 }
 
+
+.winning-message.show{
+    display: flex;
+}
